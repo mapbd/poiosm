@@ -33,8 +33,8 @@ function init() {
     $(window).bind('orientationchange pageshow resize', resizeContentArea);
     map = new L.Map('map');
 
-    var tiles = new L.TileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png', {
-        maxZoom: 18,
+    var tiles = new L.TileLayer('http://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
         subdomains: '1234', // for MapQuest tiles
         //attribution: 'Map data &copy; 2011 OpenStreetMap contributors'
         attribution: 'Tiles Courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="http://developer.mapquest.com/content/osm/mq_logo.png">. Map data &copy; 2012 OpenStreetMap contributors'
@@ -84,7 +84,10 @@ $(function() {
         var boundsString = "(" + sw.lat + "," + sw.lng + "," + nw.lat + "," + nw.lng + ")";
         console.log(boundsString);
         $.ajax({
-            url: "http://overpass.osm.rambler.ru/cgi/interpreter", 
+            url: "https://lz4.overpass-api.de/api/interpreter",
+            // url: "https://api.openstreetmap.org/api",
+            // url: "http://overpass-api.de/api/interprete",
+            // url: "http://overpass.osm.rambler.ru/cgi/interpreter", 
             data: {
                 data: "[out:json];node" + boundsString + ";out body;"
             },
